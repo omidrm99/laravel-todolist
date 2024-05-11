@@ -18,7 +18,7 @@ class TaskFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(5),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph,
             'long_description' => $this->faker->paragraph(7, true),
             'completed' => $this->faker->boolean(false),
         ];
