@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
  */
-class TaskFcatoryFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,10 @@ class TaskFcatoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(5),
+            'description' => $this->faker->paragraph,
+            'long_description' => $this->faker->paragraph(7, true),
+            'completed' => $this->faker->boolean(false),
         ];
     }
 }
