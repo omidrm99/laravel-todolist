@@ -7,10 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TASKS</title>
 </head>
-<body>
-<h1>@yield('title')</h1>
-<div>
-</div>
-@yield('content')
-</body>
+    <body>
+        <h1>
+            @yield('title')
+        </h1>
+        <div>
+            @yield('content')
+        </div>
+    </body>
 </html>

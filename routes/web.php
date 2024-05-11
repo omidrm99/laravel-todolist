@@ -66,7 +66,6 @@ Route::get('/tasks', function () use ($tasks) {
 
 Route::get('/tasks{id}', function ($id) use ($tasks) {
     $task = collect($tasks)->firstWhere('id', $id);
-
     if (!$task) {
         abort(Response::HTTP_NOT_FOUND);
     }
