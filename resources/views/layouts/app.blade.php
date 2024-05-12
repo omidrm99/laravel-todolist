@@ -6,11 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TASKS</title>
+    @yield('styles')
 </head>
     <body>
         <h1>
             @yield('title')
         </h1>
+        <div>
+            @if(session()->has('success'))
+                <div style="color: green">
+                        {{session('success')}}
+                </div>
+            @endif
+        </div>
         <div>
             @yield('content')
         </div>
