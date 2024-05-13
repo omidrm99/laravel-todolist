@@ -24,7 +24,7 @@ Route::get('/tasks/{task}/edit', function (TASK $task) {
 })->name('tasks.edit');
 
 
-Route::get('/tasks{task}', function (TASK $task) {
+Route::get('/tasks/{task}', function (TASK $task) {
     return view('show', ['task' => $task]);
 })->name('tasks.show');
 

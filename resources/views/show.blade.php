@@ -26,4 +26,16 @@
         </form>
     </div>
 
+
+
+    <div>
+        <button>
+            <a href={{route('tasks.index')}}>
+                HOME
+            </a>
+        </button>
+
+    </div>
+
+
 @endsection
