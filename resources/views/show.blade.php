@@ -15,14 +15,19 @@
     <p>{{$task->updated_at}}</p>
 
 
+    <div>
+        <button>
+            <a href="{{route('tasks.edit', ['task' => $task->id]) }}">Edit</a>
+        </button>
 
+    </div>
 
 
     <div>
         <form action="{{route('tasks.destroy' , ['task' => $task->id])}}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit">  DELETE ! </button>
+            <button type="submit"> DELETE !</button>
         </form>
     </div>
 
@@ -36,6 +41,5 @@
         </button>
 
     </div>
-
 
 @endsection
