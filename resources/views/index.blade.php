@@ -10,9 +10,9 @@
         </div>
         <br>
         <div>
-            <a href="{{ route('tasks.create') }}"> ADD TASK !!! </a>
+            <a style="color: darkorchid" href="{{ route('tasks.create') }}"> ADD TASK !!! </a>
         </div>
-
+        <br>
         @forelse($tasks as $task)
             <div>
                 <a href="{{ route('tasks.show', ['task' => $task->id]) }}">{{ $task->title }}</a>
@@ -22,7 +22,7 @@
                 There are no tasks!
             </div>
         @endforelse
-
+        <br>
         @if($tasks->count())
             <nav>
                 {{ $tasks->links() }}
