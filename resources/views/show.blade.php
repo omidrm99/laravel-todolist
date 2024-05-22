@@ -1,35 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.format')
 
 @section('title')
-    <h1>{{$task->title}}</h1>
+    <h1>{{ $task->title }}</h1>
 @endsection
 
 @section('content')
-    <p>{{$task->description}}</p>
+    <p>{{ $task->description }}</p>
 
     @if($task->long_description)
-        <p>{{$task->long_description}}</p>
+        <p>{{ $task->long_description }}</p>
     @endif
 
-    <p>{{$task->created_at}}</p>
-    <p>{{$task->updated_at}}</p>
+    <p>{{ $task->created_at }}</p>
+    <p>{{ $task->updated_at }}</p>
 
-<p>
-    @if($task->completed)
-        THIS TAST IS COMPLETED
-    @else
-        NOOOOOOOOO COMPLETE ME
-    @endif
-</p>
+    <p>
+        @if($task->completed)
+            I AM A COMPLETED TASK
+        @else
+            PLEASE COMPLETE ME MASTER
+        @endif
+    </p>
     <div>
         <button>
-            <a href="{{route('tasks.edit', ['task' => $task->id]) }}">Edit</a>
+            <a href="{{ route('tasks.edit', ['task' => $task->id]) }}">Edit</a>
         </button>
     </div>
 
 
     <div>
-        <form action="{{route('tasks.destroy' , ['task' => $task->id]) }}" method="POST">
+        <form action="{{ route('tasks.destroy' , ['task' => $task->id]) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit"> DELETE !</button>
@@ -40,7 +40,7 @@
 
     <div>
         <button>
-            <a href={{route('tasks.index')}}>
+            <a href={{ route('tasks.index') }}>
                 HOME
             </a>
         </button>

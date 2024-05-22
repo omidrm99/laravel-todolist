@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.format')
 
 @section('content')
     @include('form')
