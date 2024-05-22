@@ -19,12 +19,12 @@ Route::get('/tasks', function () {
 Route::view('/tasks/create', 'create')->name('tasks.create');
 
 
-Route::get('/tasks/{task}/edit', function (TASK $task) {
+Route::get('/tasks/{task}/edit', function (Task $task) {
     return view('edit', ['task' => $task]);
 })->name('tasks.edit');
 
 
-Route::get('/tasks/{task}', function (TASK $task) {
+Route::get('/tasks/{task}', function (Task $task) {
     return view('show', ['task' => $task]);
 })->name('tasks.show');
 

@@ -13,7 +13,7 @@
 
 @section('content')
     <form method="POST"
-          action="{{isset($task) ? route('tasks.update' , ['task' => $task->id]) : route('tasks.store')}}">
+          action="{{ isset($task) ? route('tasks.update' , ['task' => $task->id]) : route('tasks.store') }}">
         @csrf
         @isset($task)
 
@@ -36,7 +36,7 @@
                 Description
             </label>
             <textarea name="description" id="description" rows="5">
-                {{$task->description ?? old('description')}}
+                {{ $task->description ?? old('description') }}
             </textarea>
         </div>
         @error('description')
@@ -66,9 +66,5 @@
             </button>
         </div>
     </form>
-
-
-
-
 
 @endsection
