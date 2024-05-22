@@ -6,8 +6,9 @@
 
     @if(Auth::check())
         <div>
-                <a href="{{ url('/dashboard') }}">Dashboard</a>
+                <a style="color: red" href="{{ url('/dashboard') }}">Dashboard</a>
         </div>
+        <br>
         <div>
             <a href="{{ route('tasks.create') }}"> ADD TASK !!! </a>
         </div>
@@ -34,6 +35,11 @@
         </div>
         <div>
             <a href="{{ route('register') }}">Register</a>
+        </div>
+        <div>
+            <p style="color: blue">
+                Log In to See All Tasks List
+            </p>
         </div>
     @endif
 
