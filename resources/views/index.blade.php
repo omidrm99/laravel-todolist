@@ -6,7 +6,7 @@
 
     @if(Auth::check())
         <div>
-                <a style="color: red" href="{{ url('/dashboard') }}">Dashboard</a>
+                <a style="color: red" href="{{ route('dashboard') }}">Dashboard</a>
         </div>
         <br>
         <div>
