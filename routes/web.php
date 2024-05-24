@@ -5,10 +5,8 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-   // return view('welcome');
-    return redirect()->route('tasks.index');
-});
+
+Route::redirect('/', '/tasks');
 
 Route::get('/tasks', function () {
     return view('index', [
