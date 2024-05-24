@@ -4,19 +4,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
-Route::get('/', function () {
-   // return view('welcome');
-    return redirect()->route('tasks.index');
-});
 
-Route::get('/tasks', function () {
-    return view('index', [
-        'tasks' => Task::latest()->paginate()
-    ]);
-})->name('tasks.index');
+Route::redirect('/', '/tasks');
 
-Route::view('/tasks/create', 'create')->name('tasks.create');
+
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
 
 Route::get('/tasks/{task}/edit', function (Task $task) {
     return view('edit', ['task' => $task]);
