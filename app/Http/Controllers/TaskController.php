@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
-use phpDocumentor\Reflection\DocBlock\Tags\Deprecated;
 
 class TaskController extends Controller
 {
@@ -42,5 +40,10 @@ class TaskController extends Controller
     {
         $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Task deleted!');
+    }
+    public function toggleComplete(Task $task)
+    {
+        $task->toggleComplete();
+        return redirect()->back()->with('success', 'Task updated!');
     }
 }

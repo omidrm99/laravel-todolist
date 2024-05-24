@@ -17,14 +17,7 @@ Route::get('tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 Route::put('/tasks/{task}' ,[TaskController::class, 'update'])->name('tasks.update');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
-
-
-
-Route::put('tasks/{task}/toggle-complete', function (Task $task) {
-    $task->toggleComplete();
-    return redirect()->back()->with('success', 'Task updated!');
-})->name('tasks.toggle-complete');
-
+Route::put('tasks/{task}/toggle-complete', [TaskController::class, 'toggleComplete'])->name('tasks.toggle-complete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
