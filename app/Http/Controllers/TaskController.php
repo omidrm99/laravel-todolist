@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -25,5 +26,10 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         return view('show', compact('task'));
+    }
+    public function store(TaskRequest $request)
+    {
+        $task = Task::create($request->validated());
+        return redirect()->route('tasks.show', ['task' => $task->id])->with('success', 'Task created!');
     }
 }

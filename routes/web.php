@@ -14,13 +14,7 @@ Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
 Route::get('tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
-
-
-Route::post('/tasks', function (TaskRequest $request) {
-    $task = Task::create($request->validated());
-
-    return redirect()->route('tasks.show', ['task' => $task->id])->with('success', 'Task created!');
-})->name('tasks.store');
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
 
 Route::put('/tasks/{task}', function (Task $task, TaskRequest $request) {
