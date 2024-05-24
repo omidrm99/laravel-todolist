@@ -22,4 +22,8 @@ class TaskController extends Controller
     {
         return view('edit', compact('task'));
     }
+    public function show(Task $task)
+    {
+        return view('show', compact('task'));
+    }
 }

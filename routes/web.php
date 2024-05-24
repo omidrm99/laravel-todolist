@@ -13,15 +13,7 @@ Route::redirect('/', '/tasks');
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
-
-Route::get('/tasks/{task}/edit', function (Task $task) {
-    return view('edit', ['task' => $task]);
-})->name('tasks.edit');
-
-
-Route::get('/tasks/{task}', function (Task $task) {
-    return view('show', ['task' => $task]);
-})->name('tasks.show');
+Route::get('tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 
 
 Route::post('/tasks', function (TaskRequest $request) {
