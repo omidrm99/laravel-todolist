@@ -29,7 +29,7 @@ class TaskController extends Controller
     }
     public function store(TaskRequest $request)
     {
-        $task = Task::create($request->validated());
-        return redirect()->route('tasks.show', ['task' => $task->id])->with('success', 'Task created!');
+        Task::create($request->validated());
+        return redirect()->route('tasks.index')->with('success', 'Task created!');
     }
 }
