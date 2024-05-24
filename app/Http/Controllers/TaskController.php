@@ -32,4 +32,9 @@ class TaskController extends Controller
         Task::create($request->validated());
         return redirect()->route('tasks.index')->with('success', 'Task created!');
     }
+    public function update(TaskRequest $request, Task $task)
+    {
+        $task->update($request->validated());
+        return redirect()->route('tasks.index')->with('success', 'Task updated!');
+    }
 }
