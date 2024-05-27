@@ -23,7 +23,7 @@ class TaskRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'title' => ['required', 'max:10'],
+            'title' => ['required', 'max:25'],
             'description' => ['required', 'max:100'],
             'long_description' => ['nullable', 'max:255'],
         ];
