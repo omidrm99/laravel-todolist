@@ -11,7 +11,7 @@ class TaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,9 +22,10 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:10',
-            'description' => 'required|max:100',
-            'long_description' => 'nullable|max:255',
+            'user_id' => ['required|integer|exists:users,id'],
+            'title' => ['required|max:10'],
+            'description' => ['required|max:100'],
+            'long_description' => ['nullable|max:255'],
         ];
     }
 }
