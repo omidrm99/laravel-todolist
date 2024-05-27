@@ -1,9 +1,9 @@
 @extends('layouts.format')
 
-@section('title', 'The List Of All Tasks')
+@section('title', 'My Tasks')
 
 @section('content')
-
+    <h1>My Tasks</h1>
     @if(Auth::check())
         <div>
                 <a style="color: red" href="{{ route('dashboard') }}">Dashboard</a>

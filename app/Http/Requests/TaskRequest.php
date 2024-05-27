@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRequest extends FormRequest
 {
@@ -22,7 +23,7 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'integer', 'exists:users,id'],
+            'user_id' => Auth::id(),
             'title' => ['required', 'max:25'],
             'description' => ['required', 'max:100'],
             'long_description' => ['nullable', 'max:255'],
