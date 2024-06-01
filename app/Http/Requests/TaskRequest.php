@@ -23,7 +23,7 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => Auth::id(),
+            'user_id' => ['required', 'exists:users,id'],
             'title' => ['required', 'max:25'],
             'description' => ['required', 'max:100'],
             'long_description' => ['nullable', 'max:255'],
