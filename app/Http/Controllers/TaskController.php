@@ -4,21 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::where('user_id', auth()->user()->id)->latest()->paginate(3);
-        return view('index', compact('tasks'));
+        if (Auth::check()) {
+            $tasks = Task::where('user_id', auth()->user()->id)->latest()->paginate(3);
+            return view('index', compact('tasks'));
+        }
+        return view('auth.login');
     }
-
-    public function index2()
-    {
-        $tasks = Task::where('user_id', auth()->user()->id)->oldest()->paginate(3);
-         return view('index2', compact('tasks'));
-    }
-
     public function create()
     {
         return view('create');
