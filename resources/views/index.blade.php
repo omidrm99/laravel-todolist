@@ -5,7 +5,7 @@
 @section('content')
     @if(Auth::check())
         <div>
-                <a style="color: red" href="{{ route('dashboard') }}">Dashboard</a>
+            <a style="color: red" href="{{ route('dashboard') }}">Dashboard</a>
         </div>
         <br>
         <div>
@@ -14,7 +14,17 @@
         <br>
         @forelse($tasks as $task)
             <div>
-                <a href="{{ route('tasks.show', ['task' => $task->id]) }}">{{ $task->title }}</a>
+                <a href="{{ route('tasks.show', ['task' => $task->id]) }}">
+                    @if($task->completed)
+                        <p style="color: green">
+                            {{$task->title}}
+                        </p>
+                    @else
+                        <p style="color: red">
+                            {{$task->title}}
+                        </p>
+                    @endif
+                </a>
             </div>
         @empty
             <div>
