@@ -19,7 +19,7 @@ class Login
         if (Auth::check()) {
             return $next($request);
         }
-        return redirect('');
+        return redirect('normal');
     }
 }
 
