@@ -3,7 +3,7 @@
 @section('title', 'My Tasks')
 
 @section('content')
-    @if(Auth::check())
+
         <div>
             <a style="color: red" href="{{ route('dashboard') }}">Dashboard</a>
         </div>
@@ -12,6 +12,21 @@
             <a style="color: darkorchid" href="{{ route('tasks.create') }}"> ADD TASK !!! </a>
         </div>
         <br>
+
+        <div>
+            <a style="color: blue" href="{{ route('tasks.index', ['sort' => $sort == 'asc' ? 'desc' : 'asc', 'filter' => $filter]) }}">
+                Sort by Date ({{ $sort == 'asc' ? 'Descending' : 'Ascending' }})
+            </a>
+        </div>
+        <br>
+
+        <div>
+            <a style="color: green" href="{{ route('tasks.index', ['filter' => 'completed', 'sort' => $sort]) }}">Show Completed</a>
+            <a style="color: red" href="{{ route('tasks.index', ['filter' => 'not_completed', 'sort' => $sort]) }}">Show Not Completed</a>
+            <a style="color: black" href="{{ route('tasks.index', ['filter' => 'all', 'sort' => $sort]) }}">Show All</a>
+        </div>
+        <br>
+
         @forelse($tasks as $task)
             <div>
                 <a href="{{ route('tasks.show', ['task' => $task->id]) }}">
@@ -37,19 +52,5 @@
                 {{ $tasks->links() }}
             </nav>
         @endif
-
-    @else
-        <div>
-            <a href="{{ route('login') }}">Log in</a>
-        </div>
-        <div>
-            <a href="{{ route('register') }}">Register</a>
-        </div>
-        <div>
-            <p style="color: blue">
-                Log In to See All Tasks List
-            </p>
-        </div>
-    @endif
 
 @endsection
