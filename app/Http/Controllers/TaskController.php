@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    use AuthorizesRequests;
     public function index()
     {
         $sort = request()->query('sort', 'desc');
         $filter = request()->query('filter', 'all');
 
-        $query = Task::where('user_id', auth()->user()->id);
+        $query = Task::query();
 
         if ($filter == 'completed') {
             $query->where('completed', true);
@@ -33,6 +35,7 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
+        $this->authorize('update', $task);
         return view('edit', compact('task'));
     }
 
@@ -44,6 +47,7 @@ class TaskController extends Controller
     public function store(TaskRequest $request)
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::id();
         $data['completed'] = $request->has('completed');
         Task::create($data);
         return redirect()->route('tasks.index')->with('success', 'Task created!');
@@ -51,21 +55,23 @@ class TaskController extends Controller
 
     public function update(TaskRequest $request, Task $task)
     {
+        $this->authorize('update', $task);
         $data = $request->validated();
         $data['completed'] = $request->has('completed');
         $task->update($data);
         return redirect()->route('tasks.index')->with('success', 'Task updated!');
     }
 
-
     public function destroy(Task $task)
     {
+        $this->authorize('delete', $task);
         $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Task deleted!');
     }
 
     public function toggleComplete(Task $task)
     {
+        $this->authorize('update', $task);
         $task->toggleComplete();
         return redirect()->back()->with('success', 'Task updated!');
     }

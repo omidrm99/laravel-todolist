@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRequest extends FormRequest
 {
@@ -30,4 +31,12 @@ class TaskRequest extends FormRequest
             'completed' => ['nullable', 'boolean'],
         ];
     }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'user_id' => Auth::id(),
+        ]);
+    }
+
 }

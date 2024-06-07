@@ -21,22 +21,6 @@
             PLEASE COMPLETE ME MASTER
         @endif
     </p>
-    <div>
-        <button>
-            <a href="{{ route('tasks.edit', ['task' => $task->id]) }}">Edit</a>
-        </button>
-    </div>
-
-
-    <div>
-        <form action="{{ route('tasks.destroy' , ['task' => $task->id]) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit"> DELETE !</button>
-        </form>
-    </div>
-
-
 
     <div>
         <button>
@@ -46,10 +30,6 @@
         </button>
 
     </div>
-
-
-
-
 
     <div>
         <form method="post" action="{{ route('tasks.toggle-complete', ['task' => $task->id]) }}">
